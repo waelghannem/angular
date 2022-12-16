@@ -1,6 +1,6 @@
 FROM node:16
 
-RUN echo $USER
+RUN whami
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
