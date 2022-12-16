@@ -5,10 +5,6 @@
 
 ```bash
 # choose a repo
-# download or clone the repo from github
-git clone ssh://git@chassagne-scm.generixgroup.com:10022/generix/aio-front.git
-# download or clone the repo from gitlab
-git clone http://git.chassagne-scm.generixgroup.com/generix/aio-front.git
 # change directory
 cd aio-front
 # install the repo with npm
