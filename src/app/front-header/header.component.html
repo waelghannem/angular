@@ -1,0 +1,60 @@
+<!-- Navbar-->
+<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+<p-menubar [model]="itemsHeader" class="navbar-sticky">
+  <ng-template pTemplate="start">
+    <img src="assets/template/images/logo.svg" width="80" class="mr-2">
+  </ng-template>
+  <ng-template pTemplate="end">
+    <button pButton pRipple type="button" icon="fa fa-user"
+            class="p-button-rounded p-button-secondary p-button-outlined"
+            (click)="menu.toggle($event)"></button>
+
+    <p-menu id="popup-profile" #menu [popup]="true" [model]="itemsProfile"></p-menu>
+  </ng-template>
+</p-menubar>
+
+<!--<header class="navbar navbar-sticky">
+  <nav class="site-menu ">
+    <ul class="ul__menu">
+      <li>
+        <a routerLink="home">
+          <img src="assets/images/logo.svg" alt="Generix Group">
+        </a>
+      </li>
+      <li>
+        <a routerLink="home" routerLinkActive="active">
+          <span>Home</span></a>
+      </li>
+      <li>
+        <a routerLink="orders" routerLinkActive="active">
+          <span>orders</span></a>
+      </li>
+    </ul>
+  </nav>-->
+
+<!-- Toolbar-->
+<!--<div class="toolbar">
+  <div class="inner">
+    <div class="tools">
+      <div class="search"><i class="icon-search"></i></div>
+      <div class="account"><i class="icon-head"></i>
+        <ul class="toolbar-dropdown">
+          <li class="sub-menu-user">
+            <div class="user-info">
+              <h6 class="user-name">{{user.fullname}}</h6>
+            </div>
+          </li>
+            <li><a routerLink="profile/myAccount" routerLinkActive="active">
+              <span>My profile</span></a></li>
+          <li class="sub-menu-separator"></li>
+          <li><a href="#" (click)="logout()"><i class="icon-unlock"></i>Logout</a></li>
+        </ul>
+      </div>
+      <div class="cart"><a href="cart.html"></a><i class="icon-bag"></i><span class="count">3</span><span
+        class="subtotal">$289.68</span>
+      </div>
+    </div>
+  </div>
+</div>
+</header>-->
+<app-breadcrumb></app-breadcrumb>

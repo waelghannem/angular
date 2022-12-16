@@ -1,0 +1,89 @@
+/* You can add global styles to this file, and also import other style files */
+/*
+@import "~bootstrap/dist/css/bootstrap.css";
+*/
+@import "primeng/resources/primeng.min.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+:root {
+  --main-white-color: #fff;
+  --main-whitesmoke-color: #f5f5f5;
+  --main-lightskyblue-color: #0da9ef;
+  --main-gray-color: #374250;
+  --main-grey-color: #9da9b9;
+  --main-black-color: #000000;
+  --main-brown-color: #a94442;
+}
+html, body { height: 100%; }
+
+
+#login-forgotPassword, #gdprLink {
+  color: var(--main-lightskyblue-color) !important;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a { cursor: pointer; text-decoration: none; }
+
+html {
+  font-size: 1rem;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.field > label {
+  display: block !important;
+  margin-bottom: 8px;
+}
+.p-inputtext{
+  width: 100%;
+}
+.field-error{
+  color:red;
+}
+.field-pattern-true{
+  color:green;
+}
+.is-required::after{
+  content: " *";
+}
+.p-dropdown, .p-password{
+  width:100%
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
+.loginLogo {
+  display: block;
+  width: 259px;
+  height: 207px;
+  margin: auto;
+  background-size: 260px !important;
+
+}
+
+
+#popup-profile > .p-menu {
+  top:68px !important;
+}
+
+.p-dialog-header{
+  padding-bottom: 10px !important;
+}
+.rgpa-link {
+  text-decoration: underline;
+  font-size: x-small;
+}

@@ -1,0 +1,86 @@
+<p-toast></p-toast>
+<form role="form" name="myAccountForm" class="row" id="onsubmit" class="p-formgrid grid" [formGroup]="myAccountForm"
+      (ngSubmit)="onSubmit()"
+>
+  <div class="col-12">
+    <h5>My Account</h5>
+    <hr class="mt-2 mb-3">
+  </div>
+
+
+  <div class="field col-6 form-group">
+    <label for="id">ID</label>
+    <input pInputText [attr.disabled]="true" formControlName="id" id="id">
+  </div>
+
+
+  <div class="field col-6 form-group">
+    <label for="account-email">Email address</label>
+    <input pInputText formControlName="email" type="email" id="account-email">
+    <small class="field-error"
+           *ngIf="!myAccountForm.get('email').valid && myAccountForm.get('email').touched">
+      Email is invalid
+    </small>
+  </div>
+
+  <div class="field col-6 form-group">
+    <label for="firstName" class="is-required">First Name</label>
+    <input formControlName="firstName" pInputText
+           type="text" id="firstName"
+           [class.valid]="isValidField(myAccountForm, 'firstName')"
+           [class.invalid]="isInvalidField(myAccountForm, 'firstName', submitted)" maxlength="64" required
+           oninvalid="this.setCustomValidity('Value is Required.')">
+    <small class="field-error"
+           *ngIf="!myAccountForm.get('firstName').valid && myAccountForm.get('firstName').touched">
+      Value is required
+    </small>
+  </div>
+  <div class="field col-6 form-group">
+    <label for='lastName' class="is-required">Last Name</label>
+    <input formControlName="lastName" pInputText id="lastName"
+           type="text" id="account-ln" value="Adams"
+           [class.valid]="isValidField(myAccountForm, 'lastName')"
+           [class.invalid]="isInvalidField(myAccountForm, 'lastName', submitted)" maxlength="64" required
+           oninvalid="this.setCustomValidity('Value is Required.')">
+    <small class="field-error"
+           *ngIf="!myAccountForm.get('lastName').valid && myAccountForm.get('lastName').touched">
+      Value is required
+    </small>
+
+  </div>
+
+  <div class="field col-6 form-group">
+    <label for="phone">Phone</label>
+    <input formControlName="phone" id="phone" pInputText
+           type="text" id="account-pass"
+           [class.valid]="isValidField(myAccountForm, 'phone')"
+           [class.invalid]="isInvalidField(myAccountForm, 'phone', submitted)" pattern="([+]*)?([0-9]{10,12})$"
+           oninvalid="this.setCustomValidity('The number is not a valid international phone number.')">
+    <small class="field-error"
+           *ngIf="!myAccountForm.get('phone').valid && myAccountForm.get('phone').touched">
+      The number is not a valid international phone number.
+    </small>
+  </div>
+
+
+  <div class="field col-6 form-group">
+    <label for="mobile">Mobile</label>
+    <input formControlName="mobile" id="mobile" pInputText
+           type="text" id="account-confirm-pass"
+           [class.valid]="isValidField(myAccountForm, 'mobile')"
+           [class.invalid]="isInvalidField(myAccountForm, 'mobile', submitted)" pattern="([+]*)?([0-9]{10,12})$"
+           oninvalid="this.setCustomValidity('The number is not a valid international phone number.')"> <small
+    class="field-error"
+    *ngIf="!myAccountForm.get('mobile').valid && myAccountForm.get('mobile').touched">
+    The number is not a valid international phone number.
+  </small>
+
+  </div>
+  <hr class="mt-2 mb-3 text-alig">
+  <div class="field col-12">
+    <hr class="mt-2 mb-3">
+    <div class="col-md-12 text-right">
+      <button pButton type="submit" class="p-button-raised p-button-rounded">Update my informations</button>
+    </div>
+  </div>
+</form>

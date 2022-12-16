@@ -1,0 +1,33 @@
+
+.page-title {
+    padding-top: 84px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    height: 125px;
+}
+.breadcrumbs {
+  text-align: left;
+}
+
+.breadcrumb > li > a {
+    text-decoration: none;
+    color: var(--main-gray-color);
+    font-size: 13px;
+    letter-spacing: .05em;
+}
+
+.breadcrumb > li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.first-li {
+    margin-left:30px;
+}
+.breadCrumb {
+    position: relative;
+    top: 97px !important;
+}
+
+

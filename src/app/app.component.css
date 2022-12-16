@@ -1,0 +1,51 @@
+
+.page-title {
+    width: 100%;
+    /* margin-bottom: 60px; */
+    padding: 16px 0;
+    border-bottom: 1px solid var(--main-whitesmoke-color);
+    background-color: var(--main-white-color);
+}
+
+.app-container {
+    padding-top: 40px;
+    padding-left: 2%;
+    padding-right: 2%;
+    min-height: 94vh;
+}
+
+.active {
+    border-top-color: var(--main-lightskyblue-color);
+    color: var(--main-lightskyblue-color);
+}
+
+
+
+.task-title {
+    padding-top: 20px;
+    padding-left: 20px;
+    color: var(--main-gray-color);
+    display: block;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    text-align: left;
+    text-transform: none;
+}
+
+
+
+.page-title {
+    padding-top: 84px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    height: 125px;
+}
+
+
+.first-li {
+    margin-left:30px;
+}
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.generix</groupId>
+  <artifactId>aio-front</artifactId>
+  <name>[MVN] AIO-front Project - POM</name>
+  <description>AIO-front Project.</description>
+  <version>0.0.4-SNAPSHOT</version>
+  <properties>
+    <ddl-imports/>
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mmZ</maven.build.timestamp.format>
+    <docker-spotify.version>1.2.2</docker-spotify.version>
+    <template.generixcustomer>generixcustomer</template.generixcustomer>
+    <template.generix>generix</template.generix>
+  </properties>
+  <profiles>
+    <profile>
+      <properties>
+        <angular-docker.version>0.0.4</angular-docker.version>
+      </properties>
+      <id>docker-node</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>${docker-spotify.version}</version>
+            <configuration>
+              <imageName>generix/aio-front:${angular-docker.version}</imageName>
+              <dockerDirectory>.</dockerDirectory>
+              <serverId>docker-hub</serverId>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

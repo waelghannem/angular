@@ -1,0 +1,67 @@
+<div class="col-12">
+  <h5>My settings</h5>
+  <hr class="mt-2 mb-3">
+</div>
+<p-toast></p-toast>
+<form class="p-formgrid grid" [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+  <div class="field col-6">
+      <label  for="language" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(settingsForm, ('language'))}">Language</label>
+    <p-dropdown  formControlName="language" id="language" [options]="languages" placeholder="Select a Language" optionLabel="label" optionValue="value"
+                 [ngClass]="{ 'is-invalid': settingsForm.get('language').touched && !settingsForm.get('language').valid }"
+                 [showClear]="false"></p-dropdown>
+    <small class="field-error"
+           *ngIf="!settingsForm.get('language').valid && settingsForm.get('language').touched">
+      Invalid value
+    </small>
+  </div>
+  <div class="field col-6">
+  </div>
+  <div class="field col-6">
+    <label  for="language" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(settingsForm, ('dateFormat'))}">Date format</label>
+    <p-dropdown  formControlName="dateFormat" id="dateFormat" [options]="dateFormats" placeholder="Select a date format"
+                 [ngClass]="{ 'is-invalid': settingsForm.get('dateFormat').touched && !settingsForm.get('dateFormat').valid }"
+                 [showClear]="false"></p-dropdown>
+    <small class="field-error"
+           *ngIf="!settingsForm.get('dateFormat').valid && settingsForm.get('dateFormat').touched">
+      Invalid value
+    </small>
+  </div>
+
+  <div class="field col-12 form-group">
+      <label >Appearance theme</label>
+      <div class="col-12">
+        <div>
+          <p-selectButton (onChange)="changeTheme(settingsForm.get('theme').value)" optionValue="code" [options]="themes" formControlName="theme" optionLabel="icon">
+            <ng-template let-item >
+              <img [src]="item.imageSrc"  width="30">
+            </ng-template>
+          </p-selectButton>
+
+          <!--<a (click)="changeTheme('vela-blue')" class="mr-3 cursor-pointer">
+            <img src="assets/images/themes/vela-blue.png" width="50">
+          </a>-->
+         <!-- <a (click)="changeTheme('md-light-indigo')" class="mr-3 cursor-pointer">
+            <img src="assets/images/themes/md-light-indigo.svg" width="50">
+          </a>-->
+          <!--<a (click)="changeTheme('md-dark-indigo')" class="mr-3 cursor-pointer">
+            <img src="assets/images/themes/md-dark-indigo.svg" width="50">
+          </a>-->
+         <!-- <a (click)="changeTheme('bootstrap4-light-purple')" class="mr-3 cursor-pointer">
+            <img src="assets/images/themes/bootstrap4-light-purple.svg" width="50">
+          </a>
+          <a (click)="changeTheme('bootstrap4-dark-purple')" class="mr-3 cursor-pointer">
+            <img src="assets/images/themes/bootstrap4-dark-purple.svg" width="50">
+          </a>-->
+        </div>
+      </div>
+  </div>
+
+
+  <div class="col-12">
+    <hr class="mt-2 mb-3">
+    <div class="d-flex flex-wrap justify-content-between align-items-center rightDirection">
+      <button pButton type="submit" class="p-button-raised p-button-rounded">Update my parameters
+      </button>
+    </div>
+  </div>
+</form>

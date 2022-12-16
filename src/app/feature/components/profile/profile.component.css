@@ -1,0 +1,110 @@
+.custom-icon {
+  background-image: 'https://cdn2.iconfinder.com/data/icons/flat-ui-icons-24-px/24/checkmark-24-24.png';
+}
+
+.user-info-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: -1px;
+  padding-top: 90px;
+  padding-bottom: 30px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  overflow: hidden;
+}
+
+.user-info-wrapper .user-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-info-wrapper .user-info {
+  display: table;
+  position: relative;
+  width: 100%;
+  padding: 0 18px;
+  z-index: 5;
+}
+
+.list-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: -1px;
+  border: 1px solid var(--main-black-color);
+  border-color: var(--main-whitesmoke-color);
+  background-color: var(--main-white-color);
+  text-decoration: none;
+}
+
+.padding-bottom-1x {
+  padding-bottom: 24px !important;
+}
+
+.list-group-item.active {
+  border-color: var(--main-lightskyblue-color);
+  background-color: var(--main-lightskyblue-color);
+  color: var(--main-white-color);
+  cursor: default;
+  pointer-events: none;
+}
+
+a.list-group-item {
+  padding-top: 0.87rem;
+  padding-bottom: 0.87rem;
+}
+
+.user-info-wrapper .info-label {
+  display: block;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 13px;
+  background-color: var(--main-white-color);
+  color: var(--main-gray-color);
+  font-size: 12px;
+  line-height: 26px;
+  box-shadow: 0 1px 5px 0 rgb(0 0 0 / 18%);
+  cursor: pointer;
+}
+
+.activeMenu {
+  border-color: var(--main-lightskyblue-color);
+  background-color: var(--main-lightskyblue-color);
+  color: var(--main-white-color);
+  cursor: default;
+  pointer-events: none;
+}
+
+
+::ng-deep .p-menuitem-link-active {
+  border-color: var(--main-lightskyblue-color);
+  background-color: var(--main-lightskyblue-color);
+  cursor: default;
+  pointer-events: none;
+}
+
+::ng-deep .p-menuitem-link-active > span {
+  color: var(--main-white-color) !important;
+}
+
+.icon-tag:before {
+  content: "\e085"
+}

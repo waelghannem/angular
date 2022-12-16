@@ -1,0 +1,31 @@
+<div class="container padding-bottom-3x my-8">
+  <div class="padding-top-2x padding-bottom-3x mb-2" *ngIf="user">
+    <div class="row">
+      <div class="col-lg-3">
+        <aside class="user-info-wrapper p-menu">
+          <div class="user-cover profileCover" >
+            <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend">
+              Last connection: {{user.loginDate | date:user.datePattern}} at {{user.loginDate | date:'HH:mm'}}
+            </div>
+          </div>
+          <div class="user-info">
+            <p-avatar label="{{initial}}"
+                      shape="circle"
+                      styleClass="mr-auto" value="4" size="xlarge"
+                      [style]="{'background-color': 'var(--main-lightskyblue-color)', 'color': 'var(--main-black-color)'}"></p-avatar>
+            <div class="user-data">
+              <h4>{{user.fullname}}</h4><span>Active since {{user.creation | date:user.datePattern}}</span>
+            </div>
+          </div>
+        </aside>
+        <div>
+          <p-menu [model]="items" [style]="{'width':'100%', 'padding': '0em'}"></p-menu>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

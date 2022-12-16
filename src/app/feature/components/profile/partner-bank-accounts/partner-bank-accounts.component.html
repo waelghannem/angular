@@ -1,0 +1,131 @@
+<p-toast></p-toast>
+
+  <div class="col-12">
+    <h5>{{title}}</h5>
+    <hr class="mt-2 mb-3">
+  </div>
+  <p-table #dt [value]="bankAccounts" [rows]="10" [paginator]="true" [responsive]="true"
+           [globalFilterFields]="['currency','iban','bic','userFullName','creationDate']"
+           [(selection)]="selectedBankAccounts" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+           [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input (change)="showValue(($any($event.target).value))" pInputText type="text"
+                           (input)="dt.filterGlobal(($any($event.target).value), 'contains')" placeholder="Search..."/>
+                </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style=" width: 2.5%">
+          <button #btn type="button" pButton icon="pi pi-bars" (click)="menu.toggle($event)"></button>
+          <p-tieredMenu #menu [model]="itemsHeader" appendTo="body"
+                        [popup]="true"></p-tieredMenu>
+        </th>
+        <th *ngIf="!user.isParnter" pSortableColumn="currency">Partner
+          <p-sortIcon field="currency"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="currency">Currency
+          <p-sortIcon field="currency"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="iban">IBAN
+          <p-sortIcon field="iban"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="bic">BIC
+          <p-sortIcon field="bic"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="userFullName">Created by
+          <p-sortIcon field="userFullName"></p-sortIcon>
+        </th>
+        <th  pSortableColumn="creationDate">Creation date
+          <p-sortIcon field="creationDate"></p-sortIcon>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-account>
+      <tr>
+        <td>
+          <button #btn pButton pRipple type="button" icon="pi pi-ellipsis-h" class="p-button-rounded p-button-text"
+                  (click)="menu.toggle($event);onClickMenu(account);"></button>
+          <p-tieredMenu #menu [model]="itemsDetails" appendTo="body"
+                        [popup]="true"></p-tieredMenu>
+
+        <td *ngIf="!user.isParnter">{{account.partnerName}}</td>
+        <td>{{account.currency}}</td>
+        <td>{{hideTheMiddleOfTheIban(account.iban)}}</td>
+        <td>{{account.bic}}</td>
+        <td>{{account.userFullName}}</td>
+        <td>{{account.creationDate|customDate:user.datePattern}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{bankAccounts ? bankAccounts.length : 0 }} account(s).
+      </div>
+    </ng-template>
+  </p-table>
+
+
+<p-dialog [(visible)]="accountDialog" [style]="{width: '450px'}" header="Account Details" [modal]="true"
+          styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <form class="p-formgrid grid" [formGroup]="bankForm" autocomplete="off" novalidate>
+      <div class="field col-12">
+        <label for="currency" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(bankForm, ('currency'))}">Currency</label>
+        <p-dropdown  formControlName="currency" id="currency" [options]="currencies" placeholder="Select a Currency" optionLabel="label" optionValue="value"
+                     [ngClass]="{ 'is-invalid': bankForm.get('currency').touched && !bankForm.get('currency').valid }"
+                     [showClear]="false"></p-dropdown>
+        <small class="field-error" *ngIf="!bankForm.get('currency').valid && bankForm.get('currency').touched">
+          Currency is required.
+        </small>
+      </div>
+      <div class="field col-12">
+        <label for="ibanReactive" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(bankForm, ('ibanReactive'))}">IBAN</label>
+        <input pInputText formControlName="ibanReactive"
+               type="text" id="ibanReactive"
+               [ngClass]="{ 'is-invalid': bankForm.get('ibanReactive').touched && !bankForm.get('ibanReactive').valid }">
+
+        <small class="field-error"
+               *ngIf="!bankForm.get('ibanReactive').valid && bankForm.get('ibanReactive').touched">
+          IBAN is not valid
+        </small>
+      </div>
+      <div class="field col-12">
+        <label for="bic" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(bankForm, ('bic'))}">BIC</label>
+        <input pInputText  type="text" id="bic"   formControlName="bic"/>
+      <small class="field-error"
+             *ngIf="submitted &&( bankForm.get('bic').hasError('minlength') || bankForm.get('bic').hasError('maxlength'))">The
+        BIC code
+        must contain 8 to 11 characters</small>
+      <small class="field-error" *ngIf="submitted && bankForm.get('bic').hasError('required') ">
+        BIC is required.
+      </small>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveAccount()"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="removeAccountDialog" header="Remove Account" [modal]="true"
+          styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label><h6><i class="pi pi-exclamation-triangle"></i>
+        Are you sure you want to delete the IBAN for the currency {{bankAccount.currency}} ? </h6></label>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple
+            label="NO" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="YES" icon="pi pi-check" class="p-button-text" (click)="deleteAccount()"></button>
+  </ng-template>
+</p-dialog>

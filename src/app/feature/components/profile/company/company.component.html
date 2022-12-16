@@ -1,0 +1,147 @@
+<div class="col-12">
+  <h5>My company information</h5>
+  <hr class="mt-2 mb-3">
+</div>
+<p-toast></p-toast>
+<form role="form" name="myCompanyInformationForm" class="p-formgrid grid" id="onsubmit"
+      [formGroup]="myCompanyInformationForm"
+      (ngSubmit)="onSubmit()" ngNativeValidate>
+  <div class="field col-6 form-group" *ngIf="profileUser.isParnter">
+    <label  for="account-partner-code"  [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm,'code')}">Partner n°</label>
+    <input [attr.disabled]="true" pInputText
+           formControlName="code" type="text" id="account-partner-code" value="">
+  </div>
+  <div class="field col-6 form-group" [ngClass]="{ 'offset-6':!profileUser.isParnter}" >
+    <label for="account-email" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('email'))}">Email address</label>
+    <input pInputText formControlName="email" type="email" id="account-email"
+           value="daniel.adams@mail.com"
+           [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('email').touched && !myCompanyInformationForm.get('email').valid }">
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('email').valid && myCompanyInformationForm.get('email').touched">
+      Email is invalid
+    </small>
+  </div>
+  <div class="field col-6 form-group">
+    <label for="account-fn"
+           [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('customer'))}">
+            {{ profileUser.isParnter ? 'Partner name' : 'Customer' }}
+    </label>
+    <input pInputText formControlName="customer"
+           type="text" id="account-fn" value="Daniel"
+           [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('customer').touched && !myCompanyInformationForm.get('customer').valid }">
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('customer').valid && myCompanyInformationForm.get('customer').touched">
+      Customer name is invalid
+    </small>
+  </div>
+  <div class="field col-6 form-group">
+    <label for="account-ln" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('address'))}">Address</label>
+    <input
+      [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('address').touched && !myCompanyInformationForm.get('address').valid }"
+      pInputText formControlName="address"
+      type="text" id="account-ln" value="Adams"
+      maxlength="128">
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('address').valid && myCompanyInformationForm.get('address').touched">
+      Address in invalid
+    </small>
+  </div>
+  <div class="field col-6">
+    <label for="account-pass">Address Complement</label>
+    <input pInputText formControlName="addressComplement"
+           type="text" id="account-pass"
+           maxlength="128">
+
+  </div>
+  <div class="field col-6">
+    <label for="postalCode" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('postalCode'))}">Postal Code</label>
+    <input pInputText formControlName="postalCode"
+           type="text" id="postalCode"
+           maxlength="16"
+           [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('postalCode').touched && !myCompanyInformationForm.get('postalCode').valid }">
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('postalCode').valid && myCompanyInformationForm.get('postalCode').touched">
+      Postal code is invalid
+    </small>
+  </div>
+  <div class="field col-6">
+    <label for="account-pass" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('city'))}">City</label>
+    <input pInputText formControlName="city"
+           type="text" id="city"
+           maxlength="16"
+           [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('city').touched && !myCompanyInformationForm.get('city').valid }">
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('city').valid && myCompanyInformationForm.get('city').touched">
+      City is invalid
+    </small>
+  </div>
+  <div class="field col-6" *ngIf="company != undefined">
+    <label for="select-input" [ngClass]="{ 'is-required':customValidators.formControlIsRequired(myCompanyInformationForm, ('country'))}">Country</label>
+    <p-dropdown  formControlName="country" id="select-input" [options]="countries" placeholder="Select a Country" optionLabel="label" optionValue="value"
+                [ngClass]="{ 'is-invalid': myCompanyInformationForm.get('country').touched && !myCompanyInformationForm.get('country').valid }"
+                [showClear]="false"></p-dropdown>
+    <small class="field-error"
+           *ngIf="!myCompanyInformationForm.get('country').valid && myCompanyInformationForm.get('country').touched">
+      Country is invalid
+    </small>
+  </div>
+  <div class="field col-6">
+    <label for="account-pass">VAT Code</label>
+    <input pInputText formControlName="vatCode"
+           type="text" id="vatCode"
+           maxlength="255">
+    <div class="invalid-feedback">
+      <div>invalid VAT Code</div>
+    </div>
+  </div>
+  <div class="field col-6">
+    <label for="reference">Reference</label>
+    <input pInputText formControlName="reference"
+           type="text" id="reference"
+           maxlength="255">
+    <div class="invalid-feedback">
+      <div>invalid Reference</div>
+    </div>
+  </div>
+  <div class="field col-6">
+    <label for="account-pass">Register name</label>
+    <input pInputText formControlName="registerName"
+           type="text" id="registerName"
+           maxlength="255">
+    <div class="invalid-feedback">
+      <div>invalid Register name</div>
+    </div>
+  </div>
+  <div class="field col-6">
+    <label for="governmentReference">Government reference</label>
+    <input pInputText formControlName="governmentReference"
+           type="text" id="governmentReference">
+    <div class="invalid-feedback">
+      <div>invalid Government reference</div>
+    </div>
+  </div>
+  <div class="field col-6">
+    <label for="account-pass">Legal capital</label>
+    <input pInputText formControlName="legalCapital"
+           type="text" id="legalCapital"
+           maxlength="255">
+    <div class="invalid-feedback">
+      <div>invalid Legal capital</div>
+    </div>
+  </div>
+  <div class="field col-6">
+    <label for="legalStructure">Legal structure</label>
+    <input pInputText formControlName="legalStructure"
+           type="text" id="legalStructure"
+           maxlength="255">
+    <div class="invalid-feedback">
+      <div>invalid Legal structure</div>
+    </div>
+  </div>
+  <div class="field col-12">
+    <hr class="mt-2 mb-3">
+    <div class="col-md-12 text-right">
+      <button pButton type="submit" class="p-button-raised p-button-rounded">Update my informations</button>
+    </div>
+  </div>
+</form>

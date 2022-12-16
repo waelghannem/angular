@@ -1,0 +1,51 @@
+<p-toast></p-toast>
+<form class="row" [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+  <div class="col-sm-11">
+    <div class="col-12">
+      <h5>My notifications</h5>
+      <hr style='margin-top: 0em'>
+      <div class="row ml-1 mb-3 mt-2">
+        <div class="col-sm-10">
+          <label class="custom-control-label" for="notif-check-1">Activate my notifications</label>
+        </div>
+        <div class="col-sm-2">
+          <p-checkbox id="notif-check-1" formControlName="notification" [binary]="true" inputId="binary"></p-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <h5>Manage my workflow notifications</h5>
+      <hr style='margin-top: 0em'>
+      <div class="row ml-1 mb-3 mt-2">
+        <div class="col-sm-10">
+          <label class="custom-control-label" for="notif-check-2">Be notified each time I have an action to perform on
+            an invoice</label>
+        </div>
+        <div class="col-sm-2">
+          <p-checkbox id="notif-check-2" formControlName="workflowNotification" [binary]="true" inputId="binary">
+          </p-checkbox>
+        </div>
+      </div>
+      <div class="row ml-1 mb-3 mt-2">
+        <div class="col-sm-10">
+          <label class="custom-control-label" for="notif-check-3">Not to be notified if I am absent and someone else is
+            replacing me</label>
+        </div>
+        <div class="col-sm-2">
+          <p-checkbox id="notif-check-3" formControlName="workflowUserNotNotifiableIfAbsent" [binary]="true"
+                      inputId="binary"></p-checkbox>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <button pButton type="submit" class="p-button-raised p-button-rounded">Update my notifications</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,5 @@
+{
+  "production": false,
+  "apiUrl": "MY_APP_API_URL",
+  "stage": "MY_APP_STAGE"
+}

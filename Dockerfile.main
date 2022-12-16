@@ -1,0 +1,14 @@
+# This Dockerfile is used for a youtube tutorial
+# base image - nginx with tag "latest"
+FROM nginx:latest
+
+# Adding custom index.html hosted on Github Gist
+COPY /app /usr/share/nginx/html
+# Adding read permissions to custom index.html
+RUN chmod +r /usr/share/nginx/html/index.html
+#RUN chmod +x /usr/share/nginx/html/aio-front/assets/config/entrypoint.sh
+RUN chmod +x /usr/share/nginx/html/assets/config/entrypoint.sh
+# 'nginx -g daemon off" will run as default command when any container is run that uses the image that was built using this Dockerfile"
+#ENTRYPOINT ["/usr/share/nginx/html/aio-front/assets/config/entrypoint.sh"]
+ENTRYPOINT ["/usr/share/nginx/html/assets/config/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,34 @@
+<div class="row">
+<div class="col-sm-6" *ngIf="type == ToastType.INFO">
+    <div class="iziToast iziToast-info iziToast-wrapper iziToast-wrapper-topRight customToaster">
+      <div class="iziToast-body" style="padding-left: 33px;"><i class="iziToast-icon icon-bell"></i>
+        <p>{{message}}</p>
+      </div>
+      <button class="iziToast-close"></button>
+    </div>
+  </div>
+  <div class="col-sm-6" *ngIf="type == ToastType.SUCCESS">
+    <div class="iziToast iziToast-success iziToast-wrapper iziToast-wrapper-topRight customToaster">
+      <div class="iziToast-body" style="padding-left: 33px;"><i class="iziToast-icon icon-circle-check"></i>
+        <p>{{message}}</p>
+      </div>
+      <button class="iziToast-close"></button>
+    </div>
+  </div>
+  <div class="col-sm-6" *ngIf="type == ToastType.WARNING">
+    <div class="iziToast iziToast-warning iziToast-wrapper iziToast-wrapper-topRight customToaster">
+      <div class="iziToast-body" style="padding-left: 33px;"><i class="iziToast-icon icon-flag"></i>
+        <p>{{message}}</p>
+      </div>
+      <button class="iziToast-close"></button>
+    </div>
+  </div>
+  <div class="col-sm-6" *ngIf="type == ToastType.DANGER">
+  <div class="iziToast iziToast-danger iziToast-wrapper iziToast-wrapper-topRight customToaster">
+      <div class="iziToast-body" style="padding-left: 33px;"><i class="iziToast-icon icon-ban"></i>
+        <p>{{message}}</p>
+    </div>
+    <button class="iziToast-close"></button>
+</div>
+</div>
+</div>

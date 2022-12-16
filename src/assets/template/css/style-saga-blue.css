@@ -1,0 +1,64 @@
+.app-footer {
+  width: 100%;
+  bottom: 0%;
+}
+
+.site-footer {
+  background-color: var(--main-whitesmoke-color);
+}
+
+.widget-title {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--main-whitesmoke-color);
+  color: var(--main-grey-color);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.widget-light-skin .widget-title {
+  border-color: var(--main-grey-color);
+  color: var(--main-grey-color);
+}
+
+#footer > footer > div > div > div > section > ul {
+  list-style-type: none;
+  padding-left: 0% !important;
+}
+
+.widget-light-skin.widget-categories ul>li>a, .widget-light-skin.widget-links ul>li>a {
+  color: var(--main-gray-color);
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.footer__img {
+  width: 150px;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+}
+
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
+  background: white !important;
+  color: var(--bs-body-color) !important;
+}
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: white !important;
+  color: var(--bs-body-color) !important;
+}
+.p-datatable .p-sortable-column.p-highlight:hover {
+  background: white !important;
+  color: #64B5F6;
+}
+.selected-theme{
+  outline: 3px solid var(--bs-body-color) !important;
+}
+.card{
+  background: white !important;
+}
+
+.profileCover {
+  background-image: url("../images/vector-grey-gradient-abstract-background.jpg") !important;
+}

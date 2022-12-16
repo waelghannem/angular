@@ -1,0 +1,84 @@
+.app-footer {
+  width: 100%;
+  bottom: 0%;
+}
+
+.site-footer {
+  background-color: #1e1e1e !important;
+}
+
+.widget-title {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e1e7ec;
+  color: #e1e7ec;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.widget-light-skin .widget-title {
+  border-color: #e1e7ec;
+  color: #e1e7ec;
+}
+
+#footer > footer > div > div > div > section > ul {
+  list-style-type: none;
+  padding-left: 0% !important;
+}
+
+.widget-light-skin.widget-categories ul>li>a, .widget-light-skin.widget-links ul>li>a {
+  color: #e1e7ec;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.footer__img {
+  width: 150px;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+}
+
+.widget-light-skin.widget-categories ul>li>a, .widget-light-skin.widget-links ul>li>a {
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.footer__img {
+  width: 150px;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
+}
+
+.p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
+  background: var(--bs-body-color) !important;
+  color: white !important;
+}
+.p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: var(--bs-body-color) !important;
+  color: white !important;
+}
+.p-datatable .p-sortable-column.p-highlight:hover {
+  background: var(--bs-body-color) !important;
+  color: #64B5F6;
+}
+body{
+  background: var(--bs-body-color) !important;
+  color: white !important;
+}
+.selected-theme{
+  outline: 3px solid white !important;
+  border-radius: 10px;
+}
+.card{
+  background: var(--bs-body-color) !important;
+}
+
+
+.info-label {
+  background: #1e1e1e !important;
+  color: #ffffffde !important;
+  border: 1px solid #383838 !important; 
+}

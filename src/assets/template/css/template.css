@@ -1,0 +1,16 @@
+.backgroundImage {
+    background-image: url("../images/background.jpg") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 62%;
+}
+
+.loginCard {
+    position: absolute !important;
+    min-height: 537px !important;
+    top: 50%;
+    right: 10%;
+    width: 500px;
+    transform: translateY(-50%);
+}
+

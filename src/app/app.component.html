@@ -1,0 +1,8 @@
+<app-header [isLoggedIn]="isLoggedIn" [logout]="logout" *ngIf="isLoggedIn()"></app-header>
+
+<div class="app-container padding-bottom-3x">
+  <app-toast-notification [type]="type" [message]="message"></app-toast-notification>
+  <router-outlet></router-outlet>
+</div>
+<app-footer *ngIf="isLoggedIn()" class="app-footer"></app-footer>
+

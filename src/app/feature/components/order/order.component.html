@@ -1,0 +1,40 @@
+<label class="task-title">order</label>
+<div class="row">
+  <div class="col-lg-10">
+    <form (ngSubmit)="onSubmit()">
+      <fieldset>
+        <div class="form-group flexContainer">
+          <input class="fcs-search-text form-control submit-inside" type="text" id="orderId" name="orderId" [(ngModel)]="orderIdentifier" placeholder="Search...">
+          <button class="submit-button" type="submit"><i class="icon-search" style="font-size: 1.3em;"></i></button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+<br />
+<table class="table">
+  <thead>
+    <tr>
+      <th><input type="checkbox" name="websitecheck" (click) = "checkuncheckall()"></th>
+      <th>N° commande</th>
+      <th>Date commande</th>
+      <th>Date livraison</th>
+      <th>Id fournisseur</th>
+      <th>Fournisseur</th>
+      <th>Livrée à</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of allOrders">
+      <td><input type="checkbox" name="websitecheck" [checked]="isChecked"></td>
+      <td>{{ order.reference }}</td>
+      <td>{{ order.issueDate }}</td>
+      <td>{{ order.orderRequestedDeliverByDate }}</td>
+      <td>{{ order.sellerPartyID }}</td>
+      <td>{{ order.sellerPartyName }}</td>
+      <td>{{ order.shipFromPartyName }}</td>
+      <td>{{ order.status.statusCode }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,119 @@
+<p-toast></p-toast>
+<div class="col-md-5 offset-md-6 mt-4">
+  <div class="card loginCard">
+    <div class="card-body">
+      <img src="assets/template/images/logo.svg" alt="Generix Invoices Services" class="loginLogo">
+      <p *ngIf="np && resetLinkStillActive === false" style="color: #393902;"
+         class="alert alert-warning alert-dismissible fade show text-center">
+        <span style="font-weight: bold">Link has been expired</span>
+        <br>
+        Click on forgotten password
+      </p>
+      <div *ngIf="!image">
+        <form class="row" *ngIf="(!np || resetLinkStillActive === false)" [formGroup]="loginForm"
+              (ngSubmit)="onSubmit()">
+          <div class="col-12">
+            <input pInputText id="username" type="text" placeholder="User" formControlName="username"
+                   [ngClass]="{ 'is-invalid': submitted && f['username'].errors }"/>
+            <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+              <div *ngIf="f['username'].errors['required']">Username is required</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <input pInputText id='password' type="password" placeholder="Password" formControlName="password"
+                   [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"/>
+            <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+              <div *ngIf="f['password'].errors['required']">Password is required</div>
+            </div>
+          </div>
+          <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+          <br>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12 text-right mb-3">
+                <a id="login-forgotPassword" (click)="displayForgotPasswordDialog = true"
+                   class="ui-commandlink ui-widget">Forgotten password</a>
+              </div>
+              <div class="col-md-12 text-right">
+                <a pButton class="p-button-outlined p-button-rounded m-1" (click)="onOpenRegister()">Register</a>
+                <button [disabled]="loading" pButton type="submit" class="p-button-raised p-button-rounded m-1">
+                  <span *ngIf="!loading">Connection</span>
+                  <span *ngIf="loading"><i style="margin-right: 5px"
+                                           class="fa fa-spinner fa-spin "> </i>Connection</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-12 text-right mt-3">
+              <button pButton type="button" (click)="ssoLogin()"
+                      class="p-button-outlined p-button-info p-button-rounded">SSO Access
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="np && resetLinkStillActive === true">
+        <p style="color: #32b5dc;" class="alert alert-info alert-dismissible fade show text-center">
+          <span style="font-weight: bold">Reset your password</span>
+          <br>
+          Please enter a new password
+        </p>
+        <app-reset-password [resetLinkKey]="resetLinkKey" [resetLink]="resetLink" [username]="username"
+                            [exception]="exception"></app-reset-password>
+      </div>
+      <form *ngIf="this.image" [formGroup]="captchaForm" (ngSubmit)="onSubmitCatcha()">
+
+        <div class="row text-center" style=" margin-left: 25px;margin-right: 25px;">
+          <h6>For security reasons, prove that you are a human and not a robot.</h6>
+        </div>
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 text-center mb-3">
+              <p-image src="data:image/jpeg;base64,{{image}}" alt="captcha" width="400"></p-image>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+
+          <div class="row" style=" margin-left: 25px;margin-right: 25px;">
+            <label class="custom-control-label" for="inputCaptcha"> Please type in the letters exactly as you see them
+              from the image above:</label>
+            <div class="col-10">
+              <input #myInput pInputText id="inputCaptcha" type="text" formControlName="inputCaptcha"
+                     [ngClass]="{ 'is-invalid': captchaForm.get('inputCaptcha').touched && !captchaForm.get('inputCaptcha').valid }">
+
+              <small class="field-error"
+                     *ngIf=" !captchaForm.get('inputCaptcha').valid && captchaForm.get('inputCaptcha').touched">
+                Captcha is invalid
+              </small>
+            </div>
+            <div class="col-2" style="margin-top: -5px;">
+              <button  pButton pRipple type="button" class="refreshButton p-button-rounded p-button-text fab   fa-2x"  (click)="refreshCaptcha();setFocus('myInput')" >
+                <fa-icon  [icon]="faRefresh"></fa-icon>
+              </button>
+          <!--    <button pButton type="button" style="margin-right: 2px;" (click)="refreshCaptcha()">
+                <fa-icon [icon]="faRefresh"></fa-icon>
+              </button>-->
+            </div>
+
+          </div>
+
+
+        </div>
+        <br>
+        <div class="col-md-12 text-right">
+          <button pButton type="submit" class="p-button-raised p-button-rounded">Validate CAPTCHA</button>
+        </div>
+      </form>
+
+    </div>
+    <div *ngIf="!np" class="card-footer col-md-12 text-right">
+      <a id="gdprLink" href="https://gdpr.generix.biz/" class="rgpa-link">GDPR COMPLIANCE</a>
+    </div>
+  </div>
+</div>
+
+
+<app-forgot-password [displayDialog]="displayForgotPasswordDialog"
+                     (sendForgetPasswordEvent)="onSendForgetPassword()"></app-forgot-password>
